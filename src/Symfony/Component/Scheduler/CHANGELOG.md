@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+7.3
+---
+
+* Add command to run/debug scheduled tasks
+
 7.2
 ---
 

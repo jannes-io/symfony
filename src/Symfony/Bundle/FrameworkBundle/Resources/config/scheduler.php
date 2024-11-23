@@ -11,6 +11,7 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+use Symfony\Component\Scheduler\Command\RunSchedulerTaskCommand;
 use Symfony\Component\Scheduler\EventListener\DispatchSchedulerEventListener;
 use Symfony\Component\Scheduler\Messenger\SchedulerTransportFactory;
 use Symfony\Component\Scheduler\Messenger\ServiceCallMessageHandler;
@@ -34,5 +35,9 @@ return static function (ContainerConfigurator $container) {
                 service('event_dispatcher'),
             ])
             ->tag('kernel.event_subscriber')
+        ->set(RunSchedulerTaskCommand::class)
+            ->args([
+                service('scheduler.messenger.service_call_message_handler')
+            ])
     ;
 };
